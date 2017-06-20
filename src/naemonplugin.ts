@@ -136,7 +136,7 @@ export class NaemonPlugin {
 		}
 
 		process.stdout.write(this.output.join("\n") + "\n");
-		process.stdout.write(this.get_perfdata_render());
+		process.stdout.write(this.get_perfdata_render() + "\n");
 		process.exit(state);
 
 	}
