@@ -3,8 +3,8 @@
 import {suite, test} from "mocha-typescript";
 import {expect} from 'chai';
 
-import {NaemonPlugin, PerformanceData} from "../naemonplugin";
-import {NaemonThreshold} from "../naemonthreshold";
+import {NaemonPlugin, PerformanceData} from "../src/naemonplugin";
+import {NaemonThreshold} from "../src/naemonthreshold";
 
 @suite("Test Naemon plugin perfdata")
 class NaemonPluginPerfadataTester {

@@ -1,2 +1,2 @@
 "use strict";
-export {NaemonPlugin} from "./naemonplugin";
+export {NaemonPlugin} from "./src/naemonplugin";

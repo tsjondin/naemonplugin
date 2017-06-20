@@ -6,7 +6,7 @@ import {expect} from 'chai';
 import {
 	NaemonThresholdOption,
 	NaemonThreshold
-} from "../naemonthreshold";
+} from "../src/naemonthreshold";
 
 @suite("Test string options")
 class NaemonThresholdOptionTester {
