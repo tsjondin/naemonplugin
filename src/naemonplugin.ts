@@ -19,7 +19,18 @@ export interface PerformanceData {
 	uom : string
 }
 
+enum States {
+	Ok = 0,
+	Down = 1,
+	Critical = 1,
+	Warning = 2,
+	Unreachable = 2,
+	Unknown = 3
+};
+
 export class NaemonPlugin {
+
+	static readonly States = States;
 
 	private host : string;
 	private value : number;
@@ -49,6 +60,14 @@ export class NaemonPlugin {
 
 	public set_value (value : number) {
 		this.value = value;
+	}
+
+	public add_output (output : string) : void {
+		this.output.push(output);
+	}
+
+	public clear_output () : void {
+		this.output = [];
 	}
 
 	public add_perfdata (
@@ -91,6 +110,32 @@ export class NaemonPlugin {
 		} else {
 			return (value < threshold.low || value > threshold.high);
 		}
+	}
+
+	public exit (override_state : States | null = null) {
+
+		let state : number;
+
+		if (this.value === undefined) {
+			state = States.Unknown;
+		} else {
+			if (this.within_threshold(this.value, this.critical)) {
+				state = States.Critical;
+			} else if (this.within_threshold(this.value, this.warning)) {
+				state = States.Warning;
+			} else {
+				state = States.Ok;
+			}
+		}
+
+		if (typeof(override_state) === 'number') {
+			state = override_state;
+		}
+
+		process.stdout.write(this.output.join("\n") + "\n");
+		process.stdout.write(this.get_perfdata_render());
+		process.exit(state);
+
 	}
 
 }
