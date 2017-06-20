@@ -55,7 +55,10 @@ export class NaemonPlugin {
 	}
 
 	public options () : any {
-		return this.parser.parse();
+		const options : any = this.parser.parse();
+		this.warning = options.warning;
+		this.critical = options.critical;
+		return options;
 	}
 
 	public set_value (value : number) {
