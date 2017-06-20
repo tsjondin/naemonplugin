@@ -1,0 +1,32 @@
+{
+  "name": "naemonpluin",
+  "version": "1.0.0",
+  "description": "Used to develop Naemon/Nagios plugins in Node",
+  "main": "index.js",
+  "dependencies": {
+		"optionsparser": "git://github.com/tsjondin/optionparser.git"
+	},
+  "devDependencies": {
+    "typescript": "^2.3.4",
+    "@types/chai": "^4.0.0",
+    "@types/core-js": "~0.9.14",
+    "@types/mocha": "^2.2.41",
+    "@types/node": "~7.0.31",
+    "chai": "^4.0.2",
+    "mocha": "^3.4.2",
+    "mocha-typescript": "^1.1.4",
+    "source-map-support": "^0.4.15"
+  },
+  "scripts": {
+    "install": "tsc",
+    "test": "tsc && mocha --opts tests/mocha.opts && rm -rf ./tests/*.js"
+  },
+  "keywords": [
+    "naemon",
+    "nagios",
+    "plugin",
+    "monitoring"
+  ],
+  "author": "tsjondin@op5.com",
+  "license": "MIT"
+}

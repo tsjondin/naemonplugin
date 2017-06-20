@@ -1,0 +1,43 @@
+{
+
+	"compilerOptions": {
+
+		"strict": true,
+		"alwaysStrict": true,
+		"noImplicitAny": true,
+		"noImplicitThis": true,
+		"noImplicitReturns": true,
+		"noUnusedParameters": true,
+		"experimentalDecorators": true,
+
+		"outDir": "./",
+
+		"lib": [
+			"es2015"
+		],
+
+		"typeRoots": [
+			"./node_modules/@types"
+		],
+		"types": [
+			"core-js",
+			"node",
+			"mocha",
+			"chai"
+		]
+
+	},
+
+	"files": [
+		"index.ts"
+	],
+
+	"include": [
+		"tests/*.ts"
+	],
+
+	"exclude": [
+		"node_modules"
+	]
+
+}
