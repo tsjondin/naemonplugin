@@ -33,14 +33,18 @@ export class NaemonPlugin {
 
 	readonly parser : OptionParser;
 
-	constructor () {
-		this.parser = new OptionParser("Naemon plugin");
+	constructor (description : string) {
+		this.parser = new OptionParser(description);
 		this.parser.add(new IncrementOption('v', 'verbose', 'Increase verbosity of output'));
 		this.parser.add(new StringOption('V', 'version', 'Version'));
 		this.parser.add(new StringOption('H', 'hostname', 'The host to perform the check against'));
 		this.parser.add(new NaemonThresholdOption('w', 'warning', 'Warning threshold to use'));
 		this.parser.add(new NaemonThresholdOption('c', 'critical', 'Critical threshold to use'));
 		this.parser.add(new IntegerOption('t', 'timeout', 'Seconds before the plugin execution times out'));
+	}
+
+	public options () : any {
+		return this.parser.parse();
 	}
 
 	public set_value (value : number) {
